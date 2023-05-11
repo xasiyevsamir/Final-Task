@@ -10,4 +10,5 @@ namespace FinalLayihe
     {
         public int Id { get; }
     }
+    
 }

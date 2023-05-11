@@ -10,9 +10,9 @@ namespace FinalLayihe
     {
         AuthorCreate=1,
         IdAuthorRead,
-        AuthorUpdate,
+        IdAuthorUpdate,
         AllAthorRead,
         IdAuthorDelete,
-        AuthorGo,
+        GoToMenu ,
     }
 }

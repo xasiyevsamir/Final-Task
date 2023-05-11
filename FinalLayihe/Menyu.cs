@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal enum Menyu:byte
+    internal enum Menu:byte
     {
         Author = 1,
         Book,

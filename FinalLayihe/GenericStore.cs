@@ -10,8 +10,9 @@ namespace FinalLayihe
 {
 
 
-    internal class GenericsStore<T> : IEnumerable<T> where T : class, IEquatable<T>,IdInterface
+    internal class GenericStore<T> : IEnumerable<T> where T : class, IEquatable<T>,IdInterface
     {
+        static Helper H = new Helper();
         T[] data=new T[0];
 
         public void Add(T item)
@@ -35,7 +36,18 @@ namespace FinalLayihe
         public T GetId(int id)
         {
             var data1 = Array.Find(data, item=>item.Id==id);
-            return (T)data1;
+                
+                return data1;
+                        
+        }
+        public bool GetBoolId(int number)
+        {
+             
+            if (Array.Exists(data, item => item.Id == number))
+            {
+                return true;
+            } 
+            return false;
         }
         public T this[int index]
         {

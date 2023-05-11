@@ -9,10 +9,10 @@ namespace FinalLayihe
     internal enum BookEnum:byte
     {
         BookCreate=1,
-        BookRead,
-        BookUpdate,
-        BookDelete,
-        BookID,
-        BookGo
+        IdBookRead,
+        IdBookUpdate,
+        AllBookRead,
+        IdBookDelete,
+        GoToMenu
     }
 }

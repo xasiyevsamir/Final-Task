@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal class BooKClass:IEquatable<BooKClass>
+    internal class BooKClass:IEquatable<BooKClass>, IdInterface
     {
         static int counter = 0;
         public BooKClass()
@@ -19,7 +19,7 @@ namespace FinalLayihe
         public int AuthorId { get; set; }
         public  Genre Genre { get; set; }
         public int PageGCount { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public bool Equals(BooKClass? other)
         {

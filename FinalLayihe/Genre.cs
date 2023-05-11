@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal enum Genre
+    internal enum Genre:byte
     {
-        Tarix=1,
-        Fizika,
-        Kmya,
-        Riyaziyyat,
-        Biologiya,
-        Edebiyyat,
+        Roman=1,       
+        Tarixi,
+        Bediyi,
+        Detektiv,
+        Nagil,
+        Dini,
     }
 }

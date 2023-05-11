@@ -16,7 +16,7 @@ namespace FinalLayihe
             Console.Write(" ".PadLeft(20, ' '));
             for (int i = 0; i < info.Length; i++)
             {   Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             }
             Console.WriteLine();
         }
@@ -28,7 +28,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             }
             Console.WriteLine();
         }
@@ -40,7 +40,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             } 
         }
         public void Method6(string info)
@@ -50,7 +50,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             }
         }
         public int Method7(string info)
@@ -61,7 +61,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             }
             if (!int.TryParse(Console.ReadLine(),out result)||result<1)
             {
@@ -78,7 +78,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             }
             Console.WriteLine();
         }
@@ -90,8 +90,10 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(25);
+                Thread.Sleep(10);
             }
+            Thread.Sleep(3000);
+            Console.Clear();
             Console.WriteLine();
         }
         public T Method5<T>()
@@ -107,7 +109,7 @@ namespace FinalLayihe
                 for (byte i = 0; i < data1.Length; i++)
                 {
                     Console.Write(data1[i]);
-                    Thread.Sleep(25);
+                    Thread.Sleep(10);
                 }
                 Console.WriteLine();
             }
@@ -124,47 +126,41 @@ namespace FinalLayihe
                 goto l1;
             }
             Method1("Zehmet olmasa gozleyin emeliyyat yuklenir... ");
-            Thread.Sleep(3000);
-            Method4("Emeliyat hazirdir !");
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
+            Method4("Emeliyyat hazirdir !");
+            Thread.Sleep(2000);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             return (T) result;
         }
         public int ReadInt(string data)
         {
-           l1: Method6(data);
             int result;
-             if (!int.TryParse(Console.ReadLine(), out result ))
+        l1:
+            if (!int.TryParse(Readstring(data), out result))
             {
+                Method1("Yalniz tam reqem daxil edin !");
                 goto l1;
             }
             return result;
         }
-        public decimal ReadDecimal()
+        public decimal ReadDecimal(string data)
         {
            l1:
             decimal result;
-            if (!decimal.TryParse(Console.ReadLine(), out result))
+            if (!decimal.TryParse(Readstring(data), out result))
             {
+                Method1("Yalniz reqem daxil edin.");
                 goto l1;
             }
             return result;
         }
-        public ushort Readint16()
-        {   
-            ushort result;
-        l1: if (!ushort.TryParse(Console.ReadLine(), out result))
-            {
-                goto l1;
-            }
-            return result;
-        }
+        
         public string Readstring(string data)
         {
            l1: Method6(data);
             Console.ForegroundColor = ConsoleColor.Green;
-           string result=Console.ReadLine();
+            string result=Console.ReadLine();
             if (string.IsNullOrWhiteSpace(result))
             {
                 Method1("Bu xanani bos buraxmaqa icaze verilmir !");
@@ -180,9 +176,30 @@ namespace FinalLayihe
             if (key.Key == ConsoleKey.Enter)
             {
                 Method1("Ekran silinir....");
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 Console.Clear();
             }
+        }
+        public bool Readbool()
+        {
+            var key = Console.ReadKey();
+            if (key.Key == ConsoleKey.Enter)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void Method8(string info)
+        {
+            var color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            for (int i = 0; i < info.Length; i++)
+            {
+                Console.Write(info[i]);
+                Thread.Sleep(10);
+            }
+            Console.WriteLine();
         }
     }
 }
