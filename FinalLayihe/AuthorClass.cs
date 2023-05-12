@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal class AuthorClass:IEquatable<AuthorClass>,IdInterface
-    {  
-        static int counter=0;
+    [Serializable]
+    public class AuthorClass:IEquatable<AuthorClass>,IdInterface
+    {
         public AuthorClass()
         {
+            int counter = Program.CountA();          
             counter++;
-            this.Id=counter;
+            this.Id = counter;
         }
         public int Id { get; private set; }
         public string Name { get ; set; }
@@ -25,11 +26,6 @@ namespace FinalLayihe
            if ( other==null) return false;
 
             return this.Id == other.Id;
-        }
-
-        public override string ToString()
-        {
-            return $"Id: {Id}\n Ad: {Name}\n Soyad: {Surname}";
         }
     }
 }

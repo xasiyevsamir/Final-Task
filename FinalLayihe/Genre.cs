@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal enum Genre:byte
+    public enum Genre:byte
     {
         Roman=1,       
         Tarixi,

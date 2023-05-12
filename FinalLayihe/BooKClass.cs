@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal class BooKClass:IEquatable<BooKClass>, IdInterface
+    [Serializable]
+    public class BooKClass:IEquatable<BooKClass>, IdInterface
     {
-        static int counter = 0;
         public BooKClass()
         {
+            int counter = Program.CountB();
             counter++;
             this.Id = counter;
         }
@@ -26,11 +27,6 @@ namespace FinalLayihe
             if (other == null) return false;
 
             return this.Id == other.Id;
-        }
-
-        public override string ToString()
-        {
-            return $"Id: {Id}\n Ad: {Name}\n Genre: {Genre}\n Sehve sayi:{PageGCount}\n Qiymeti: {Price}";
         }
     }
 }

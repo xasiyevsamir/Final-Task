@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-    internal interface IdInterface
+    public interface IdInterface
     {
         public int Id { get; }
     }

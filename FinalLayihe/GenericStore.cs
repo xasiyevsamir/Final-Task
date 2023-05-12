@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace FinalLayihe
 {
-
-
-    internal class GenericStore<T> : IEnumerable<T> where T : class, IEquatable<T>,IdInterface
+    [Serializable]
+    public  class GenericStore<T> : IEnumerable<T> where T : class, IEquatable<T>,IdInterface
     {
         static Helper H = new Helper();
         T[] data=new T[0];
-
         public void Add(T item)
         {
             int len = data.Length;
@@ -31,33 +29,21 @@ namespace FinalLayihe
                 }
                 Array.Resize(ref data, data.Length -1);
             }
-
         }
         public T GetId(int id)
         {
-            var data1 = Array.Find(data, item=>item.Id==id);
-                
-                return data1;
-                        
+            var data1 = Array.Find(data, item=>item.Id==id);                
+                return data1;                        
         }
         public bool GetBoolId(int number)
-        {
-             
+        {            
             if (Array.Exists(data, item => item.Id == number))
             {
                 return true;
             } 
             return false;
         }
-        public T this[int index]
-        {
-            get
-            {
-                return data[index];
-            }
-        }
-        public int Count { get { return data.Length; } }
-
+        public int Count { get { return data.Length; } set { } }
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var item in data)
@@ -65,12 +51,9 @@ namespace FinalLayihe
                yield return item;
             }
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
         }
-
-        
     }
 }

@@ -1,27 +1,42 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.ComponentModel.Design.Serialization;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Linq;
 
 namespace FinalLayihe
 {
     internal class Program
-    {
+    { 
+       const string datafayll = "database.dat";
         static GenericStore<AuthorClass> G1 = new GenericStore<AuthorClass>();
         static GenericStore<BooKClass> G2 = new GenericStore<BooKClass>();
         static void Main(string[] args)
         {
-            G2.Add(new BooKClass { Name = "sevgilim", AuthorId = 1, Genre = Genre.Roman, PageGCount = 16, Price = 15.5m });
-            G2.Add(new BooKClass { Name = "qorxu", AuthorId = 1, Genre = Genre.Detektiv, PageGCount = 12, Price = 17.8m });
-            G2.Add(new BooKClass { Name = "gozellik", AuthorId = 1, Genre = Genre.Nagil, PageGCount = 14, Price = 13.2m });
-            G2.Add(new BooKClass { Name = "heyat", AuthorId = 1, Genre = Genre.Tarixi, PageGCount = 17, Price = 20.2m });
-            G1.Add(new AuthorClass { Name = "Samir", Surname = "Xasiyev" });
-            G1.Add(new AuthorClass { Name = "Valeh", Surname = "Ibrahimli" });
-            G1.Add(new AuthorClass { Name = "Hesen", Surname = "Sariyev" });
+           h1:
+            try
+            {
+                using (var fs = File.Open(datafayll, FileMode.OpenOrCreate, FileAccess.Read))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    Database db = bf.Deserialize(fs) as Database;
+                    if (db != null)
+                    {
+                        G1 = db.Author;
+                        G2 = db.Book;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Baza bosdur !");
+            }
             BooKClass book;
             AuthorClass author;
             Helper M1 = new Helper();
@@ -41,7 +56,9 @@ namespace FinalLayihe
                         Console.WriteLine();
                         string name = M1.Readstring("Adiniz:");
                         string surname = M1.Readstring("Soyadiniz:");
+                        Console.WriteLine(G1.Count);
                         G1.Add(new AuthorClass { Name = name, Surname = surname });
+
                         Console.Clear();
                         M1.Method4("<<<<<<Melumat ugurla daxil edildi>>>>>>");
                         M1.Method3("Menyuya geri donus olunur....");
@@ -63,7 +80,7 @@ namespace FinalLayihe
                             GetAllAuthorId();
                         }
                         index = M1.Method7("Oxumaq isdediyiniz datanin ID daxil edin:");
-                        author = Program.G1.GetId(index);
+                        author = G1.GetId(index);
                         if (author != null)
                         {
                             Console.Clear();
@@ -94,7 +111,7 @@ namespace FinalLayihe
                             GetAllAuthorId();
                         }
                         index = M1.Method7("Yenilemek isdediyiniz datanin ID daxil edin:");
-                        author = Program.G1.GetId(index);
+                        author = G1.GetId(index);
                         if (author != null)
                         {
                             author.Name = M1.Readstring("Yeni Ad:");
@@ -134,10 +151,11 @@ namespace FinalLayihe
                             GetAllAuthorId();
                         }
                         index = M1.Method7("Silmek isdediyiniz datanin Id daxil edin:");
-                        author = Program.G1.GetId(index);
+                        author = G1.GetId(index);
                         if (author != null)
                         {
-                            Program.G1.Remove(author);
+
+                            G1.Remove(author);
                         }
                         else { M1.Method1("Silmek isdediyiniz Id tapilmadi !"); Thread.Sleep(3000); Console.Clear(); goto l5; }
                         Console.Clear();
@@ -205,7 +223,7 @@ namespace FinalLayihe
                             GetAllBookId();
                         }
                     l4: index = M1.Method7("Oxumaq isdediyiniz datanin ID daxil edin:");
-                        book = Program.G2.GetId(index);
+                        book = G2.GetId(index);
                         if (book != null)
                         {
                             Console.Clear();
@@ -219,7 +237,7 @@ namespace FinalLayihe
                             }
                             else
                             {
-                                Program.G2.Remove(book);
+                                G2.Remove(book);
                                 M1.Method1($" Id {book.Id} olan book sistemden silinib. ");
                                 Thread.Sleep(3000);
                                 Console.Clear();
@@ -248,7 +266,7 @@ namespace FinalLayihe
                             GetAllBookId();
                         }
                     l5: index = M1.Method7("Yenilemek isdediyiniz datanin ID daxil edin:");
-                        book = Program.G2.GetId(index);
+                        book = G2.GetId(index);
                         if (book != null)
                         {
                             M1.Method1("Yenilemek isdediyiniz Id-de asagidaki melumatlar var");
@@ -271,7 +289,7 @@ namespace FinalLayihe
                     case 4:
                         if (G2.Count == 0)
                         {
-                            M1.Method1("Author yoxdur zehmet olmasa elave edin.");
+                            M1.Method1("Kitab yoxdur zehmet olmasa elave edin.");
                             goto case 1;
                         }
                         M1.Method8("Butun datalara nece saniye baxacaqsan ?");
@@ -284,7 +302,6 @@ namespace FinalLayihe
                     case 5:
                         if (G2.Count == 0)
                         {
-                            M1.Method1("Kitab yoxdur zehmet olmasa elave edin.");
                             Thread.Sleep(3000);
                             Console.Clear();
                             goto case 1;
@@ -297,7 +314,7 @@ namespace FinalLayihe
                             GetAllBookId();
                         }
                     j5: index = M1.Method7("Silmek isdediyiniz datanin Id daxil edin:");
-                        book = Program.G2.GetId(index);
+                        book = G2.GetId(index);
                         if (book != null)
                         {
                             M1.Method1("Silmek isdediyiniz Id-de asagidaki melumatlar var");
@@ -306,7 +323,7 @@ namespace FinalLayihe
                             M1.Method3("Bu melumatlarin silinmesi ucun <Enter> duymesin sixin !");
                             if (M1.Readbool())
                             {
-                                Program.G2.Remove(book);
+                                G2.Remove(book);
                                 M1.Method4("Melumat ugurla silindi.");
                                 goto l3;
                             }
@@ -322,15 +339,25 @@ namespace FinalLayihe
                         else { M1.Method1("Silmek isdediyiniz Id tapilmadi !"); goto j5; }
                     case 6:
                         goto l6;
-
                 }
-
+            }
+            else if (number == 3)
+            {
+                using (FileStream fs = File.OpenWrite(datafayll))
+                {
+                    Database db = new Database();
+                    db.Author = G1;
+                    db.Book = G2;
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(fs, db);                   
+                }
+                M1.Method("Save edildi !");
+                Thread.Sleep(2000);
+                Console.Clear();
+                goto h1;
             }
         }
-
-
-
-
+        //Diger methodlar.
         static void GetAllAuthor()
         {
             Helper M1 = new Helper();
@@ -363,9 +390,15 @@ namespace FinalLayihe
                 Console.WriteLine($"Book Id:{item.Id}");
             }
         }
-
-
-
-
+        public static int CountA()
+        {
+            int digit = G1.Count;
+            return digit;
+        }
+        public static int CountB()
+        {
+            int digts = G2.Count;
+            return digts;
+        }
     }
 }
