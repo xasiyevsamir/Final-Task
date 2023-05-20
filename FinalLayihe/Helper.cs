@@ -198,7 +198,5 @@ namespace FinalLayihe
             }
             return false;
         }
-
-       
     }
 }

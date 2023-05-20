@@ -154,7 +154,7 @@ namespace FinalLayihe
                         author = G1.GetId(index);
                         if (author != null)
                         {
-
+                            RemoveIndex(index);
                             G1.Remove(author);
                         }
                         else { M1.Method1("Silmek isdediyiniz Id tapilmadi !"); Thread.Sleep(3000); Console.Clear(); goto l5; }
@@ -399,6 +399,11 @@ namespace FinalLayihe
         {
             int digts = G2.Count;
             return digts;
+        }
+        public static int RemoveIndex(int digits)
+        {
+
+            return digits;
         }
     }
 }
