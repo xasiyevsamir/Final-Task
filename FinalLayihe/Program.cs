@@ -21,7 +21,7 @@ namespace FinalLayihe
         static GenericStore<RemoveBookData> R2 = new GenericStore<RemoveBookData>();
         static void Main(string[] args)
         {
-        h1:
+           h1:
             FileGet();
             BooKClass book;
             AuthorClass author;
