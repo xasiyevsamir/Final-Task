@@ -463,7 +463,7 @@ namespace FinalLayihe
                 surname = M1.Readstring("Soyadiniz:");
                 if (name == "Samir" && surname == "Xasiyev")
                 {
-                    if (R1.Count != 0)
+                    if (R2.Count != 0)
                     {
                     f1: bool data = M1.RobotOrPeople();
                         if (data)
