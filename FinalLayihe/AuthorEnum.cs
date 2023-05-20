@@ -9,7 +9,7 @@ namespace FinalLayihe
     internal enum AuthorEnum:byte
     {
         AuthorCreate=1,
-        IdAuthorRead,,
+        IdAuthorRead,
         IdAuthorUpdate,
         AllAthorRead,
         IdAuthorDelete,
