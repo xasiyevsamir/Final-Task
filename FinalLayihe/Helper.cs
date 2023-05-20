@@ -192,11 +192,33 @@ namespace FinalLayihe
         public bool Readbool()
         {
             var key = Console.ReadKey();
+            Console.WriteLine();
             if (key.Key == ConsoleKey.Enter)
-            {
+            {                
                 return true;
             }
             return false;
+        }
+        public bool RobotOrPeople()
+        {
+            int number1,number2,number3;
+            Method2("(ROBOT)--Dogrulama kodunu kecin !");
+            Console.WriteLine();
+            Random rnd = new Random();
+            number1 = rnd.Next(1,21);
+            number2 = rnd.Next(20,41);
+            number3= ReadInt($"Hesablayib daxil edin : {number1}+{number2} = ");
+            Console.WriteLine();
+            if (number3 == number1 + number2)
+            {               
+                Method4("Dogrulama kodunu ugurla kecdiz !");
+                return true;
+            }
+            else
+            {
+                Method1("Dogrulama kodu tesdiq edilmedi.Yeniden cehd etmek ucun<Enter> Menyu ucun isdenilen duymeni sixin !");
+                return false;
+            }          
         }
     }
 }

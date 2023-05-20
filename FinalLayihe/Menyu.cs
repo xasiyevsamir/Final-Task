@@ -10,6 +10,8 @@ namespace FinalLayihe
     {
         Author = 1,
         Book,
-        Save
+        Save,
+        RemoveAuthorData,
+        RemoveBookData
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace FinalLayihe
 {
     [Serializable]
-    public  class GenericStore<T> : IEnumerable<T> where T : class, IEquatable<T>,IdInterface
+    public class GenericStore<T> : IEnumerable<T> where T : class, IEquatable<T>, IdInterface
     {
         static Helper H = new Helper();
         T[] data=new T[0];
@@ -36,11 +36,11 @@ namespace FinalLayihe
                 return data1;                        
         }
         public bool GetBoolId(int number)
-        {            
+        {
             if (Array.Exists(data, item => item.Id == number))
             {
                 return true;
-            } 
+            }
             return false;
         }
         public int Count { get { return data.Length; } set { } }
