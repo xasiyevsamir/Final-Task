@@ -15,7 +15,7 @@ namespace FinalLayihe
             Console.Write(" ".PadLeft(20, ' '));
             for (int i = 0; i < info.Length; i++)
             {   Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
             Console.WriteLine();
         }
@@ -27,7 +27,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
             Console.WriteLine();
         }
@@ -39,7 +39,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             } 
         }
         public void Method3(string info)
@@ -50,7 +50,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
             Console.WriteLine();
         }
@@ -62,9 +62,9 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
             Console.Clear();
             Console.WriteLine();
         }
@@ -81,7 +81,7 @@ namespace FinalLayihe
                 for (byte i = 0; i < data1.Length; i++)
                 {
                     Console.Write(data1[i]);
-                    Thread.Sleep(5);
+                    Thread.Sleep(1);
                 }
                 Console.WriteLine();
             }
@@ -98,9 +98,9 @@ namespace FinalLayihe
                 goto l1;
             }
             Method1("Zehmet olmasa gozleyin emeliyyat yuklenir... ");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Method4("Emeliyyat hazirdir !");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             return (T)result;
@@ -112,7 +112,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
         }
         public int Method7(string info)
@@ -123,7 +123,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
             if (!int.TryParse(Console.ReadLine(),out result)||result<1)
             {
@@ -139,7 +139,7 @@ namespace FinalLayihe
             for (int i = 0; i < info.Length; i++)
             {
                 Console.Write(info[i]);
-                Thread.Sleep(5);
+                Thread.Sleep(2);
             }
             Console.WriteLine();
         }
