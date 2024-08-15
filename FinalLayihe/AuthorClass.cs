@@ -16,7 +16,7 @@ namespace FinalLayihe
         {           
             this.Id = Program.CountA();
         }
-        public int Id { get; private set; }
+        public int Id { get; private set; } 
         public string Name { get ; set; }
         public string Surname { get; set; }
         public bool Equals(AuthorClass? other)
