@@ -14,7 +14,7 @@ namespace FinalLayihe
             Console.ForegroundColor =ConsoleColor.Blue;
             Console.Write(" ".PadLeft(20, ' '));
             for (int i = 0; i < info.Length; i++)
-            {   Console.Write(info[i]);
+            {   Console.Write(info[i]);;
                 Thread.Sleep(2);
             }
             Console.WriteLine();
